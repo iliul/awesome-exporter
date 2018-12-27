@@ -1,0 +1,13 @@
+[Unit]
+Description=rabbitmq_exporter service
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+LimitNOFILE=1000000
+User=root
+ExecStart=/root/rabbitmq_exporter/rabbitmq_exporter
+Restart=always
+RestartSec=15s
+
+[Install]
+WantedBy=multi-user.target
