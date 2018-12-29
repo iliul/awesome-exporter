@@ -1,0 +1,13 @@
+[Unit]
+Description=kafka_exporter service
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+LimitNOFILE=1000000
+User=root
+ExecStart=/root/kafka_exporter/kafka_exporter --kafka.server=kafka:9092
+Restart=always
+RestartSec=15s
+
+[Install]
+WantedBy=multi-user.target
